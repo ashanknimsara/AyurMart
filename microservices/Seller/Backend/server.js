@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const bodyparser = require("body-parser");
 const cors = require("cors");
 const dotenv=require("dotenv");
-const notes = require("./data/notes");
 const connectDB = require("./config/db");
 const sellerRouter = require("./routes/sellers.js");
 
@@ -22,10 +21,6 @@ app.use('/uploads', express.static('backend/uploads'));
 
 app.use("/seller",sellerRouter);
 
-
-//app.use('/user', user);
-// app.use(notFound);
-// app.use(errorHandler);
 
 const PORT=process.env.PORT  || 5000;
 

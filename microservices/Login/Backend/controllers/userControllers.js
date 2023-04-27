@@ -1,7 +1,7 @@
 
 //error handling
 const asyncHandler = require("express-async-handler");
-const User = require("../models/userModels");
+const User = require("../models/sellerModels");
 const generateToken = require("../utils/generateToken");
 
 
