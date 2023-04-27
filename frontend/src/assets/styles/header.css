@@ -1,0 +1,119 @@
+.main__header__container {
+  height: 120vh;
+  position: relative;
+  margin-top: -106px;
+}
+.main {
+  position: fixed;
+}
+.header__container {
+  height: 100vh;
+  width: 100%;
+  background-image: url("../../assets/images/homer.jpeg");
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  font-family: "poppins", sans-serif;
+  
+}
+.header__container::after {
+  position: absolute;
+  content: "";
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(to bottom right, rgb(24, 24, 31), black);
+  opacity: 0.6;
+}
+.header__details__container {
+  padding: 150px 80px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  color: #fff;
+  position: absolute;
+}
+.header__top__topic {
+  font-weight: 500;
+  font-size: 25px;
+  margin-top: 60px;
+  
+}
+.header__bottom__para {
+  width: 100%;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  font-size: 30px;
+  margin-top: -10px;
+  /* line-height: 35px; */
+}
+.header__btn {
+  background: #fcc001;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  border: none;
+  width: 40%;
+  cursor: pointer;
+  padding: 10px 10px;
+  font-family: "poppins", sans-serif;
+  color: #000;
+  font-weight: 800;
+  font-size: 20px;
+}
+.header__btn:hover {
+  background-color: transparent;
+  border: 0.5px solid #fff;
+  color: #fff;
+}
+.header__counter {
+  width: 90%;
+  height: 25vh;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  position: absolute;
+  /* top: 50%; */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.header__counter__details {
+  display: flex;
+  flex-direction: column;
+  /* border: 0.1px solid #333; */
+  align-items: center;
+  gap: 5px;
+  font-family: "poppins", sans-serif;
+}
+.counter {
+  font-weight: 700;
+  font-size: 40px;
+  color: #30743a;
+  margin-top: -5px;
+}
+.counter__para {
+  color: #737070;
+  font-weight: 700;
+  width: 100%;
+  margin-top: 15px;
+  text-align: center;
+  font-size: 15px;
+}
+@media screen and (max-width: 600px) {
+  .header__btn {
+    font-size: 10px;
+  }
+  .counter{
+    font-size: 25px;
+  }
+  .counter__para {
+    font-size: 10px;
+  }
+}
+
