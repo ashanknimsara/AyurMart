@@ -5,22 +5,17 @@ const alert = require('alert');
 const Mongoose = require('mongoose');
 let Product = require("../models/product");
 
-//image upload
-const storage = multer.diskStorage ({
-    destination : (req, file, cb) => {
-        cb(null, 'backend/uploads');
+//upload img
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'backend/uploads')
     },
-
-    filename : (req,file,cb) => {
-        cb(null, Date.now() + file.originalname)
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + '-' + file.originalname)
     }
-    
-});
-
-const upload = multer({
-    storage:storage,
-    
-}).single('image')
+  })
+  
+  const upload = multer({ storage: storage }).array('images', 5)
 
 
 router.post('/add', upload, async(req,res)=>{
