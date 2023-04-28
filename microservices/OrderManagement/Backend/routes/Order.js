@@ -105,12 +105,10 @@ router.route("/delete-Order/:id").delete(async(req, res) => {
                 res.status(500).send({ status: "Error with updating data", error: err.message });
             })
     })
-   
-//644a51a3313e3591d49a87a6
+  
 router.delete("/delete-Order/:id", async(req, res) => {
     let Order_id = req.params.id;
 
-    //console.log(driver_id)wwdd
 
     await OrderSchema.deleteOne({ _id: Order_id })
         .then(() => {
@@ -122,6 +120,7 @@ router.delete("/delete-Order/:id", async(req, res) => {
             res.status(500).send({ status: "Error with delete Order", error: err.message });
         })
 })
+
 
 
 module.exports = router;

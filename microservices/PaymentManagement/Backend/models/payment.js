@@ -1,51 +1,61 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const Schema = mongoose.Schema;
 
-const paymentSchema = new Schema({
-    cardName : {
-        type: String,
-        required: true
+const PaymentSchema = new mongoose.Schema({
+
+
+    cardName:{
+        type:String,
+        required:true
     },
-    cardNumber : {
-        type: Number,
-        required: true
+    cardNumber:{
+        type:String,
+        required:true,
+        
     },
-    expiry : {
-        type: String,
-        required: true
+    expiry:{
+        type:String,
+        required:true
     },
-    cvv : {
-        type: Number,
-        required: true
+    cvv:{
+        type:String,
+        required:true,
     },
-    street : {
-        type: String,
-        required: true
+
+    street:{
+        type:String,
+        required:true
     },
-    city : {
-        type: String,
-        required: true
+    city:{
+        type:String,
+        required:true,
+        
     },
-    state : {
-        type: String,
-        required: true
+    state:{
+        type:String,
+        required:true
     },
-    zip : {
-        type: Number,
-        required: true
+    zip:{
+        type:String,
+        required:true,
     },
-    amount : {
-        type: Number
+    amount:{
+        type:String,
+        required:true,
+        
     },
-    IDOrder : {
-        type: String
+    IDOrder:{
+        type:String,
+        required:true
     },
-    payID : {
-        type: String
-    }
+    payID:{
+        type:String,
+        required:true,
+    },
+ 
+ 
+   
+    
 })
 
-const Payment = mongoose.model("Payment",paymentSchema);
-
-module.exports = Payment;
+module.exports = mongoose.model('Payment' ,PaymentSchema )
