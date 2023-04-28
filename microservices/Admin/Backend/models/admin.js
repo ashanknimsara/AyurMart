@@ -31,12 +31,6 @@ const adminSchema = mongoose.Schema(
       unique: true,
     },
 
-    pic: {
-      type: String,
-      required: true,
-      default:
-        "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
-    },
   },
 
   //when was created in database feild &updated
