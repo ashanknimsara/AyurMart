@@ -14,7 +14,7 @@ app.use(bodyparser.urlencoded({ extended: false }))
 
 
 
-app.use("/api/Delivery", require("./routes/Delivery"))
+app.use("/api/Order", require("./routes/Order"))
 
 
 
