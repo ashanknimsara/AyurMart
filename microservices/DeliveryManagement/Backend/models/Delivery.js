@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
 
-const OrderSchema = new mongoose.Schema({
+const DeliverySchema = new mongoose.Schema({
 
 
-    contactNO:{
+    cusName:{
         type:String,
         required:true
     },
@@ -18,35 +18,23 @@ const OrderSchema = new mongoose.Schema({
         required:true,
         
     },
-    area:{
+    driverName:{
         type:String,
         required:true
     },
-    orderID:{
+    vehicleNumber:{
         type:String,
         required:true,
     },
-    total:{
+    nic:{
         type:String,
         required:true,
     },
-    nItems:{
+    contactNumber:{
         type:String,
         required:true
     },
-    Quantity:{
-        type:String,
-        required:true
-    },
-    Amount:{
-        type:String,
-        required:true,
-    },
-    category:{
-        type:String,
-        required:true
-    },
-    user:{
+    deliveryStatus:{
         type:String,
         required:true
     },
@@ -54,4 +42,4 @@ const OrderSchema = new mongoose.Schema({
     
 })
 
-module.exports = mongoose.model('Order' ,OrderSchema )
+module.exports = mongoose.model('Delivery' ,DeliverySchema )
