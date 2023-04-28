@@ -1,36 +1,22 @@
 {
-  "name": "verve",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "scripts": {
-    "start": "nodemon backend/server.js",
-    "check:format": "prettier --check .",
-    "format:fix": "prettier --write ."
-  },
-  "author": "Rishad",
-  "license": "ISC",
-  "dependencies": {
-    "alert": "^5.0.10",
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.20.0",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.0",
-    "express": "^4.17.3",
-    "express-async-handler": "^1.2.0",
-    "jsonwebtoken": "^9.0.0",
-    "jspdf": "^2.5.1",
-    "mongoose": "^6.3.2",
-    "multer": "^1.4.4",
-    "nodemon": "^2.0.15",
-    "prettier": "^2.8.8",
-    "react-datepicker": "^4.8.0",
-    "react-icons": "^4.3.1",
-    "react-stripe-checkout": "^2.6.3",
-    "react-to-print": "^2.14.7",
-    "react-toastify": "^9.0.1",
-    "stripe": "^9.1.0",
-    "sweetalert": "^2.1.2",
-    "uuid": "^8.3.2"
-  }
+    "name": "backend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "test": "node index"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "consola": "^2.15.3",
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.0",
+        "express": "^4.17.3",
+        "mongoose": "^6.2.8",
+        "mongoose-sequence": "^5.3.1",
+        "nodemon": "^2.0.15"
+    }
 }
