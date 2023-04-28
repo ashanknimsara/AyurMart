@@ -18,7 +18,6 @@ router.route("/add-Product").post((req, res) => {
     const productName = req.body.productName;
     const category = req.body.category;
     const date = req.body.date;
-
     const price = req.body.price;
     const quantity = req.body.quantity;
     const unit = req.body.unit;
