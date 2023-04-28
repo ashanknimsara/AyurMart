@@ -84,16 +84,7 @@ router.route("/update-Product/:id").put(async (req, res) => {
         })
 })
 
-router.route("/delete-Product/:id").delete(async(req, res) => {
-        const update = await ProductSchema.findByIdAndUpdate(Product_id, updateProduct)
-            .then(() => {
-                res.status(200).send({ status: "Product updated..." })
-            }).catch((err) => {
-                console.log(err);
-                res.status(500).send({ status: "Error with updating data", error: err.message });
-            })
-    })
- 
+
 
 router.delete("/delete-Product/:id", async(req, res) => {
     let Product_id = req.params.id;
