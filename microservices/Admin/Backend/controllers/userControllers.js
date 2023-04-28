@@ -9,7 +9,7 @@ const generateToken = require("../utils/generateToken");
 //@route           POST /api/users/
 //@access          Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password, phone,pic } = req.body;
+  const { name, email, password, phone } = req.body;
   const userExist = await User.findOne({ email });
 
   if (userExist) {
@@ -21,7 +21,6 @@ const registerUser = asyncHandler(async (req, res) => {
     email,
     password,
     phone,
-    pic,
   });
 
   if (user) {
@@ -31,7 +30,6 @@ const registerUser = asyncHandler(async (req, res) => {
       email: user.email,
       isAdmin: user.isAdmin,
       phone:user.phone,
-      pic: user.pic,
       token: generateToken(user._id),
     });
   } else {
@@ -55,7 +53,6 @@ const authUser = asyncHandler(async (req, res) => {
        email: user.email,
        isAdmin: user.isAdmin,
        phone: user.phone,
-       pic: user.pic,
        token: generateToken(user._id),
      });
    } else {
@@ -81,7 +78,6 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
     user.phone=req.body.phone ||user.phone;
-    user.pic = req.body.pic || user.pic;
 
     if (req.body.password) {
       user.password = req.body.password;
@@ -94,7 +90,6 @@ const updateUserProfile = asyncHandler(async (req, res) => {
       name: updatedUser.name,
       email: updatedUser.email,
       phone: user.phone,
-      pic: updatedUser.pic,
       isAdmin: updatedUser.isAdmin,
       token: generateToken(updatedUser._id),
     });

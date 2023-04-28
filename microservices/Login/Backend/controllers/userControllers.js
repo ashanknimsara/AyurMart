@@ -5,9 +5,9 @@ const User = require("../models/userModels");
 const generateToken = require("../utils/generateToken");
 
 
-//@description     Register new user
-//@route           POST /api/users/
-//@access          Public
+//Register new user
+//POST/api/users/
+
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password, phone,pic } = req.body;
   const userExist = await User.findOne({ email });
@@ -41,9 +41,8 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
-
 //@description     Auth the user
-//@route           POST /api/users/login
+//@route           POST/api/users/login
 const authUser = asyncHandler(async (req, res) => {
   const {  email, password } = req.body;
    const user = await User.findOne({ email });
@@ -66,12 +65,6 @@ const authUser = asyncHandler(async (req, res) => {
   
 });
 
-
-
-
-// @desc    GET user profile
-// @route   GET /api/users/profile
-// @access  Private
 
 const updateUserProfile = asyncHandler(async (req, res) => {
   //initially need their id 
