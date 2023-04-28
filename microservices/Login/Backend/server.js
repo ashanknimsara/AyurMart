@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const bodyparser = require("body-parser");
 const cors = require("cors");
 const dotenv=require("dotenv");
-const notes = require("./data/notes");
 const connectDB = require("./config/db");
 const sellerRoutes =require('./routes/sellerLoginRoutes');
 const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
