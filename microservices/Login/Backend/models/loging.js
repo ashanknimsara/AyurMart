@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 
 
-const SellerSchema = new mongoose.Schema({
+const logingSchema = new mongoose.Schema({
 
 
     name:{
         type:String,
         required:true
     },
-    address:{
+    password:{
         type:String,
         required:true,
         
@@ -26,4 +26,4 @@ const SellerSchema = new mongoose.Schema({
     
 })
 
-module.exports = mongoose.model('Seller' ,SellerSchema )
+module.exports = mongoose.model('loging' ,logingSchema )
