@@ -5,7 +5,7 @@ const cors = require("cors");
 const dotenv=require("dotenv");
 const notes = require("./data/notes");
 const connectDB = require("./config/db");
-const paymentRouter = require("./routes/payments.js");
+
 
 
 
@@ -20,9 +20,8 @@ app.use(bodyparser.urlencoded({ extended: true }));
 
 app.use('/uploads', express.static('backend/uploads'));
 
-
-
-
+//routes
+const paymentRouter = require("./routes/payments.js");
 app.use("/payment",paymentRouter);
 
 

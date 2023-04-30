@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const paymentSchema = new Schema({
-    cardName : {
+    card_name : {
         type: String,
         required: true
     },
-    cardNumber : {
+    card_number : {
         type: Number,
         required: true
     },

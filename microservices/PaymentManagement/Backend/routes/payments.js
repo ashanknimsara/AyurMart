@@ -1,64 +1,35 @@
-const router = require("express").Router();
-let Payment = require('../models/payment');
+const express = require("express");
+const router = express.Router();
 
-router.route('/add').post(async(req,res) => {
+const Payment = require("../models/payment");
 
-    const newPayment = new Payment({
+router.get("/testpayment", (req, res) => res.send("Payment route testing!"));
 
-        payID: req.body,
-        cardName: req.body.cardName,
-        cardNumber: req.body.cardNumber,
-        expiry: req.body.expiry,
-        cvv: req.body.cvv,
-        street: req.body.street,
-        city: req.body.city,
-        state: req.body.state,
-        zip: req.body.zip,
-        amount: req.body.amount,
-        IDOrder: req.body.IDOrder
-    })
-
-
-    const totalNumberOfPayInDb = await Payment.countDocuments()
-
-    let numberToString = totalNumberOfPayInDb.toString()
-
-    
-    if(numberToString.length < 5){
-        for (let i = numberToString.length; i < 3; i++){
-            numberToString = '0' + numberToString
-        }
-    }
-    newPayment.payID = `PMT${numberToString}`
-
-    newPayment.save().then(() => {
-        res.json("Payment added")
-    }).catch((err) => {
-        console.log(err)
-    })
-})
-
-
-router.route("/view").get((req,res)=>{
-
-    Payment.find().then((payments)=>{
-        res.json(payments)
-    }).catch((err)=>{
-        console.log(err)
-    })
-})
-
-
-router.route("/view/:id").get(async(req,res)=>{
-
-    let payId = req.params.id;
-
-    const payment = await Payment.findById(payId).then((payment)=>{
-        res.json(payment)
-    }).catch((err)=>{
-        console.log(err.message);
-        res.status(500).send({status: "Error with get payment", error: err.message});
-    })
-})
-
+router.get("/all", (req, res) => {
+    Payment.find()
+    .then((items) => res.json(items))
+    .catch((err) => res.status(404).json({ noCartfound: "No Payment found" }));
+});
+router.get("/:id", (req, res) => {
+    Payment.findById(req.params.id)
+    .then((item) => res.json(item))
+    .catch((err) => res.status(404).json({ noCartfound: "No Payment found" }));
+});
+router.post("/send", (req, res) => {
+    Payment.create(req.body)
+    .then((item) => res.json({ msg: "add Payment successfully" }))
+    .catch((err) => res.status(400).json({ error: "Unable to add" }));
+});
+router.put("/:id", (req, res) => {
+    Payment.findByIdAndUpdate(req.params.id, req.body)
+    .then((item) => res.json({ msg: "Updated successfully" }))
+    .catch((err) =>
+      res.status(400).json({ error: "Unable to update the Database" })
+    );
+});
+router.delete("/:id", (req, res) => {
+    Payment.findByIdAndRemove(req.params.id, req.body)
+    .then((item) => res.json({ msg: "Payment entry deleted successfully" }))
+    .catch((err) => res.status(404).json({ error: "No such Payment" }));
+});
 module.exports = router;
