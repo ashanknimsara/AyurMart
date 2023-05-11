@@ -34,7 +34,7 @@ const startApp = async () => {
     );
   } catch (err) {
     error({
-      message: `Unable to connect with the Database ${DB}`,
+      message: `Unable to connect with the Database`,
       badge: true,
     });
     startApp();
