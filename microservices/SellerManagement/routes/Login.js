@@ -106,4 +106,27 @@ router.post("/logout", (req, res) => {
   res.clearCookie("token").json("You have been logged out");
 });
 
+// Get all sellers route
+router.get("/sellers", async (req, res) => {
+  try {
+    const sellers = await Seller.find();
+    res.json(sellers);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+// Delete a specific seller by ID route
+router.delete("/sellers/:id", async (req, res) => {
+  try {
+    const deletedSeller = await Seller.findByIdAndDelete(req.params.id);
+    if (deletedSeller) {
+      res.json(`Seller with ID ${req.params.id} has been deleted`);
+    } else {
+      res.status(404).json(`Seller with ID ${req.params.id} not found`);
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

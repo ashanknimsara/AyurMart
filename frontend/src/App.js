@@ -6,6 +6,7 @@ import Signup from "./components/logger/Signup/Signup"
 import Login from "./components/logger/Login/Login";
 import Profile from "./components/logger/Profile/Profile";
 import EditProfile from "./components/logger/Profile/EditProfile";
+import ViewSellers from "./components/admin/ViewSellers";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/Login" element={<Login />}/>
           <Route path="/profile" element={<Profile />}/>
           <Route path="/edit-profile" element={<EditProfile />}/>
+          <Route path="/viewSellers" element={<ViewSellers />}/>
         </Routes>
       </BrowserRouter>
     </div>
