@@ -21,7 +21,11 @@ const Mainnav = () => {
         fetch("http://localhost:5000/auth/log/logout", {
             credentials: "include",
             method: "POST",
-        });
+        })
+        .then(() => {
+            window.location.href = "/";
+        })
+        .catch(error => console.log(error));
     }
 
     const [colorChange, setColorchange] = useState(false);
@@ -63,10 +67,10 @@ const Mainnav = () => {
                 <div className="nav__credention__btn__section">
                     {username && (
                         <>
-                            <Link to="/create-session">
+                            <Link to="/profile">
                                 <button className="nav__btn">
-                                    <GrAddCircle className="dfg" />
-                                    create post
+                                    
+                                    profile
                                 </button>
                             </Link>
                             <button className="nav__btn" onClick={logout}>
