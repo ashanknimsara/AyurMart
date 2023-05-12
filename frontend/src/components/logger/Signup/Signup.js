@@ -8,7 +8,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  //add the details and submit the details . Auto refresh the page
+
   async function register(ev) {
     ev.preventDefault();
 
@@ -17,15 +17,17 @@ const Login = () => {
       body: JSON.stringify({ username, email, password }),
       headers: { "Content-Type": "application/json" },
     });
-    if (response.status === 200) {
-      Alert("success", "Registration is successfully!");
-    } else {
-      // Alert("failed", "Registration failed.");
-      Alert("fail", "Registration is failed!");
 
-      // alert('failed')
+    if (response.status === 200) {
+      Alert("success", "Registration is successful!");
+      setTimeout(() => {
+        window.location.href = "/login";
+      }, 1500); 
+    } else {
+      Alert("fail", "Registration failed.");
     }
   }
+
   return (
     <div className="login__container">
       <div className="login__left">
