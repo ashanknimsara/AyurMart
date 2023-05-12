@@ -11,6 +11,7 @@ const sec = "kjktjtjtjt";
 
 router.use(cookieparser());
 
+// Signup route
 router.post("/signup", async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -26,8 +27,7 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-//login
-
+// Login route
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
   const sellerImp = await Seller.findOne({ username });
@@ -35,7 +35,7 @@ router.post("/login", async (req, res) => {
   const passwordOk = bcrypt.compareSync(password, sellerImp.password);
 
   if (passwordOk) {
-    //logged
+    // Generate a JWT token and set it as a cookie
     jwt.sign({ username, id: sellerImp._id }, sec, {}, (err, token) => {
       if (err) throw err;
 
@@ -46,55 +46,64 @@ router.post("/login", async (req, res) => {
   }
 });
 
-//get profile with checked logged
-router.get("/profile", (req, res) => {
-  const { token } = req.cookies;
-  jwt.verify(token, sec, {}, (err, info) => {
-    if (err) throw err;
-    res.json(info);
-  });
+// View profile route
+router.get("/profile", async (req, res) => {
+  try {
+    // Get the user ID from the JWT token
+    const decodedToken = jwt.verify(req.cookies.token, sec);
+    const sellerImp = await Seller.findById(decodedToken.id);
+
+    // Return the user's profile information
+    res.json({
+      username: sellerImp.username,
+      email: sellerImp.email,
+    });
+  } catch (err) {
+    res.status(401).json("Unauthorized");
+  }
 });
 
+// Update profile route
+router.put("/profile", async (req, res) => {
+  try {
+    // Get the user ID from the JWT token
+    const decodedToken = jwt.verify(req.cookies.token, sec);
+
+    // Find the seller by ID and update their profile information
+    const sellerImp = await Seller.findByIdAndUpdate(
+      decodedToken.id,
+      { $set: req.body },
+      { new: true }
+    );
+
+    // Return the updated seller information
+    res.json({
+      username: sellerImp.username,
+      email: sellerImp.email,
+    });
+  } catch (err) {
+    res.status(401).json("Unauthorized");
+  }
+});
+
+// Delete profile route
+router.delete("/profile", async (req, res) => {
+  try {
+    // Get the user ID from the JWT token
+    const decodedToken = jwt.verify(req.cookies.token, sec);
+
+    // Find the seller by ID and delete their profile
+    await Seller.findByIdAndDelete(decodedToken.id);
+
+    // Clear the cookie
+    res.clearCookie("token").json("Your account has been deleted");
+  } catch (err) {
+    res.status(401).json("Unauthorized");
+  }
+});
+// Logout route
 router.post("/logout", (req, res) => {
-  res.cookie("token", " ").json("ok");
-});
-
-// delete seller by id
-router.delete('/sellers/:id', async (req, res) => {
-  const { id } = req.params;
-
-  try {
-    const deletedSeller = await Seller.findByIdAndDelete(id);
-    if (!deletedSeller) {
-      return res.status(404).json({ message: 'Seller not found' });
-    }
-    res.json({ message: 'Seller deleted successfully' });
-  } catch (error) {
-    console.error(error.message);
-    res.status(500).json({ message: 'Server error' });
-  }
-});
-
-// update seller by id
-router.put('/sellers/:id', async (req, res) => {
-  const { id } = req.params;
-  const { username, email, password } = req.body;
-
-  try {
-    const sellerToUpdate = await Seller.findById(id);
-    if (!sellerToUpdate) {
-      return res.status(404).json({ message: 'Seller not found' });
-    }
-    sellerToUpdate.username = username || sellerToUpdate.username;
-    sellerToUpdate.email = email || sellerToUpdate.email;
-    sellerToUpdate.password = password ? bcrypt.hashSync(password, salt) : sellerToUpdate.password;
-
-    const updatedSeller = await sellerToUpdate.save();
-    res.json(updatedSeller);
-  } catch (error) {
-    console.error(error.message);
-    res.status(500).json({ message: 'Server error' });
-  }
+  res.clearCookie("token").json("You have been logged out");
 });
 
 module.exports = router;
