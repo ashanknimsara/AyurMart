@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MainNav from "./MainNav.js";
 import Footer from "./Footer.js"
+import { Link } from "react-router-dom";
 import "../assets/styles/productpage.css";
 
 const ProductPage = () => {
@@ -23,12 +24,13 @@ const ProductPage = () => {
     };
 
     return (
-        <div><MainNav />
-            <div className="product-grid"> {/* Add the article-grid class here */}
+        <div>
+            <MainNav />
+            <div className="product-grid">
                 {products.map((product) => (
-                    <div className="product-card" key={product._id}> {/* Add the article-card class here */}
-                        <img src={`http://localhost:3005/${product.productImage}`} alt={`${product.productName}`} /> {/* Add the alt attribute for accessibility */}
-                        <a href={`/shop/${product._id}`}>{product.productName}</a> {/* Add a link to the full article */}
+                    <div className="product-card" key={product._id}>
+                        <img src={`http://localhost:3005/${product.productImage}`} alt={`${product.productName}`} />
+                        <Link to={`/products/${product._id}`}>{product.productName}</Link>
                         <p>{formatPrice(product.productPrice)}</p>
                     </div>
                 ))}
