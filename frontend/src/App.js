@@ -31,6 +31,9 @@ function App() {
           <Route path="/Login" element={<Login />}/>
           <Route path="/profile" element={<Profile />}/>
           <Route path="/edit-profile" element={<EditProfile />}/>
+          <Route path="/viewSellers" element={<ViewSellers />}/>
+
+
         </Routes>
       </BrowserRouter>
     </div>
