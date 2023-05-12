@@ -73,7 +73,7 @@ border-radius: 50%;
   background-color: #fff;
   color: #343;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  font-weight: 600;
+  
 }
 .nav__li__section.colorChange{
   color: #343;
@@ -83,3 +83,7 @@ border-radius: 50%;
   top: 0;
   z-index: 999;
 }
+.nav__ul__section a {
+  text-decoration: none;
+}
+
