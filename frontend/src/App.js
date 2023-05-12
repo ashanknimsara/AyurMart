@@ -12,8 +12,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/shop" component={ProductPage} />
-
+          <Route path="/shop" element={<ProductPage />}/>
         </Routes>
       </BrowserRouter>
     </div>

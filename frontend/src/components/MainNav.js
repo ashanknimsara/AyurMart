@@ -3,6 +3,7 @@ import "../assets/styles/mainnav.css";
 import { Link } from "react-router-dom";
 import { GrAddCircle } from "react-icons/gr";
 
+
 const Mainnav = () => {
 
     const [username, setUsername] = useState(null);
@@ -49,9 +50,11 @@ const Mainnav = () => {
                     <h2 className="navlogo__title">AYURMART</h2>
                 </div>
                 <div className="nav__ul__section">
-                    <li className={colorChange ? "nav__li__section colorChange" : "nav__li__section"}>Home</li>
+                    <Link to="/">
+                        <li className={colorChange ? "nav__li__section colorChange" : "nav__li__section"}>Home</li>
+                    </Link>
                     <Link to="/shop">
-                    <li className={colorChange ? "nav__li__section colorChange" : "nav__li__section"}>Shop Now</li>
+                        <li className={colorChange ? "nav__li__section colorChange" : "nav__li__section"}>Shop Now</li>
                     </Link>
                     <li className={colorChange ? "nav__li__section colorChange" : "nav__li__section"}>About Us</li>
                     <li className={colorChange ? "nav__li__section colorChange" : "nav__li__section"}>Contact Us</li>

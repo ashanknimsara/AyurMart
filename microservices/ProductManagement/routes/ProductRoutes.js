@@ -21,10 +21,10 @@ const upload = multer({ storage });
 //router.post("/new", AdminAuth, upload.single("image"), async (req, res) => {
     router.post("/new", upload.single("productImage"), async (req, res) => {
         try {
-            const { productId, productName, productCategory, productPrice, productQuantity  } = req.body;
+            const { productId, productName, productDescription, productPrice, productQuantity, sellerId  } = req.body;
             const productImage = req.file ? req.file.path : "";
     
-            const product = new Product({ productId, productName, productCategory, productPrice, productQuantity, productImage });
+            const product = new Product({ productId, productName, productDescription, productPrice, productQuantity, sellerId, productImage });
             await product.save();
     
             return res.status(201).json({
@@ -41,7 +41,7 @@ const upload = multer({ storage });
         }
     });
 
-// Localhost:3005/products/all - GET - Get all products
+// localhost:3005/products/all - GET - Get all products
 router.get("/all", async (req, res) => {
     try {
         const products = await Product.find();
@@ -59,7 +59,7 @@ router.get("/all", async (req, res) => {
     }
 });
 
-// Localhost:3005/products/:id - GET - Get a specific article
+// localhost:3005/products/:id - GET - Get a specific product
 router.get("/:id", async (req, res) => {
     try {
         const product = await Product.findById(req.params.id);
@@ -80,11 +80,32 @@ router.get("/:id", async (req, res) => {
     }
 });
 
+// localhost:3005/products - GET - Get products by sellerId
+router.get("/", async (req, res) => {
+    try {
+        const products = await Product.find({ sellerId: req.query.sellerId });
+        if (!products)
+            return res.status(404).json({ status: false, message: "Not found" });
+
+        return res.status(200).json({
+            status: true,
+            message: `Products retrieved successfully for seller ${req.query.sellerId}`,
+            data: products,
+        });
+    } catch (error) {
+        return res.status(500).json({
+            status: false,
+            message: "Server error",
+            data: undefined,
+        });
+    }
+});
+
 // localhost:3005/products/update/:id - PUT - Update an existing article
 //router.put("/update/:id", AdminAuth, upload.single("image"), async (req, res) => {
     router.put("/update/:id", upload.single("productImage"), async (req, res) => {
         try {
-            const { productId, productName, productCategory, productPrice, productQuantity } = req.body;
+            const { productId, productName, productDescription, productPrice, productQuantity } = req.body;
             const productImage = req.file ? req.file.path : "";
     
             const product = await Product.findById(req.params.id);
@@ -98,7 +119,7 @@ router.get("/:id", async (req, res) => {
     
             product.productId = productId;
             product.productName = productName;
-            product.productCategory = productCategory;
+            product.productDescription = productDescription;
             product.productPrice = productPrice;
             product.productQuantity = productQuantity;
             product.productImage = productImage || product.productImage;
