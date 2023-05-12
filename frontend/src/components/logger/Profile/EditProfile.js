@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./editprofile.css";
 import MainNav from "../../MainNav";
+import Swal from "sweetalert2";
 
 const EditProfile = () => {
   const [username, setUsername] = useState("");
@@ -38,12 +39,23 @@ const EditProfile = () => {
   };
 
   const handleDelete = async () => {
-    const response = await fetch("http://localhost:5000/auth/profile", {
-      method: "DELETE",
-      credentials: "include",
+    const { value } = await Swal.fire({
+      title: "Are you sure you want to delete your profile?",
+      text: "This action cannot be undone.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete my profile",
     });
-    if (response.status === 200) {
-      window.location.href = "/login";
+    if (value) {
+      const response = await fetch("http://localhost:5000/auth/profile", {
+        method: "DELETE",
+        credentials: "include",
+      });
+      if (response.status === 200) {
+        window.location.href = "/login";
+      }
     }
   };
 
