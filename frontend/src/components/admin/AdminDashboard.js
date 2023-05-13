@@ -11,7 +11,7 @@ const AdminDashboard = () => {
       <h1 className="admin-home-title">Welcome to the Admin Dashboard</h1>
       <p className="admin-home-instructions">Please select an option below:</p>
       <Link to="/viewSellers" className="admin-home-button">Seller Management</Link>
-      <button className="admin-home-button">Product Management</button>
+      <Link to="/viewAllProducts" className="admin-home-button">Product Management</Link>
       {/* <button className="admin-home-button">Option 1</button>
       <button className="admin-home-button">Option 2</button> */}
     </div>
