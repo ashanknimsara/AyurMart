@@ -65,7 +65,7 @@ const SellerDashboard = () => {
     });
 });
 setTimeout(()=>{
-    window.location.replace("http://localhost:3000/seller/sellerdashboard/");
+    window.location.replace("http://localhost:3000/seller/dashboard/");
 },3000)
 }
 
