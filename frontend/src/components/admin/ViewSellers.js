@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./ViewSellers.css";
+import AdminNavbar from "../AdminNavbar"
 
 const ViewSellers = () => {
   const [sellers, setSellers] = useState([]);
@@ -27,6 +28,8 @@ const ViewSellers = () => {
   const filteredSellers = sellers.filter((seller) => seller.username.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
+    <>
+    <AdminNavbar/>
     <div className="view-sellers-container">
       <h1>All Sellers</h1>
       <input type="text" className="search" placeholder="Search sellers..." onChange={(e) => setSearchTerm(e.target.value)} value={searchTerm} />
@@ -51,6 +54,7 @@ const ViewSellers = () => {
         </tbody>
       </table>
     </div>
+    </>
   );
 };
 
