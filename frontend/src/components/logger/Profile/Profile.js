@@ -10,6 +10,7 @@ const Profile = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(true);
 
+  const [id, setid] = useState("");
   // Fetch the user's profile information from the server when the component mounts
   useEffect(() => {
     const fetchProfile = async () => {
@@ -20,7 +21,10 @@ const Profile = () => {
       if (response.status === 200) {
         const data = await response.json();
         setUsername(data.username);
+        setid(data.id);
         setEmail(data.email);
+        localStorage.setItem("id", id);
+        
       } else {
         // Redirect the user to the login page if they are not logged in
         window.location.href = "/login";
@@ -29,6 +33,7 @@ const Profile = () => {
     };
     fetchProfile();
   }, []);
+  
 
   return (
     <><MainNav />

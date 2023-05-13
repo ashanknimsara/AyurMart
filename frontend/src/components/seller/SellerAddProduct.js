@@ -19,7 +19,7 @@ export default function SellerAddProduct() {
 
 
     const sendData = async (e) => {
-        e.preventDefault();
+        
 
         let formData = new FormData();
         formData.append("productId", productId);

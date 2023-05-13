@@ -60,6 +60,9 @@ const Mainnav = () => {
                     <Link to="/shop">
                         <li className={colorChange ? "nav__li__section colorChange" : "nav__li__section"}>Shop Now</li>
                     </Link>
+                    <Link to="/cart">
+                        <li className={colorChange ? "nav__li__section colorChange" : "nav__li__section"}>Cart</li>
+                    </Link>
                     <li className={colorChange ? "nav__li__section colorChange" : "nav__li__section"}>About Us</li>
                     <li className={colorChange ? "nav__li__section colorChange" : "nav__li__section"}>Contact Us</li>
                 </div>

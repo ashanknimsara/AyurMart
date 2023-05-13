@@ -18,14 +18,6 @@ const DeliverySchema = new mongoose.Schema({
         required:true,
         
     },
-    driverName:{
-        type:String,
-        required:true
-    },
-    vehicleNumber:{
-        type:String,
-        required:true,
-    },
     nic:{
         type:String,
         required:true,
@@ -36,7 +28,7 @@ const DeliverySchema = new mongoose.Schema({
     },
     deliveryStatus:{
         type:String,
-        required:true
+        
     },
    
     

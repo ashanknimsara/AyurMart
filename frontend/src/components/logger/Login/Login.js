@@ -56,7 +56,7 @@ const Login = () => {
                 onChange={(ev) => setPassword(ev.target.value)}
               />
             </div>
-            <button className="log__btn">login</button>
+            <button className="log__btn" >login</button>
           </form>
           <span className="log__span">
             Have not an Account?

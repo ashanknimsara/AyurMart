@@ -17,8 +17,6 @@ router.route("/add-Delivery").post((req, res) => {
     const cusName = req.body.cusName;
     const address = req.body.address;
     const date = req.body.date;
-    const driverName = req.body.driverName;
-    const vehicleNumber = req.body.vehicleNumber;
     const nic = req.body.nic;
     const contactNumber = req.body.contactNumber;
     const deliveryStatus = req.body.deliveryStatus;
@@ -28,8 +26,6 @@ router.route("/add-Delivery").post((req, res) => {
         cusName,
         address,
         date,
-        driverName,
-        vehicleNumber,
         nic,
         contactNumber,
         deliveryStatus,
@@ -51,8 +47,6 @@ router.route("/update-Delivery/:id").put(async (req, res) => {
         cusName,
         address,
         date,
-        driverName,
-        vehicleNumber,
         nic,
         contactNumber,
         deliveryStatus,
@@ -62,8 +56,6 @@ router.route("/update-Delivery/:id").put(async (req, res) => {
         cusName,
         address,
         date,
-        driverName,
-        vehicleNumber,
         nic,
         contactNumber,
         deliveryStatus,

@@ -11,6 +11,10 @@ import Login from "./components/logger/Login/Login";
 import Profile from "./components/logger/Profile/Profile";
 import EditProfile from "./components/logger/Profile/EditProfile";
 
+import ViewCart from "./components/Cart/ViewCart";
+import WishList from "./components/Cart/WishList";
+
+import AddDelivary from "./components/AddDelivary";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -30,6 +34,11 @@ function App() {
           <Route path="/Login" element={<Login />}/>
           <Route path="/profile" element={<Profile />}/>
           <Route path="/edit-profile" element={<EditProfile />}/>
+
+          <Route path="/cart" element={<ViewCart />} />
+          <Route path="/wishlist" element={<WishList />} />
+
+          <Route path="/AddDelivary" element={<AddDelivary />} />
 
         </Routes>
       </BrowserRouter>
