@@ -13,6 +13,7 @@ import Login from "./components/logger/Login/Login";
 import Profile from "./components/logger/Profile/Profile";
 import EditProfile from "./components/logger/Profile/EditProfile";
 import ViewSellers from "./components/admin/ViewSellers";
+import ViewAllProducts from "./components/admin/ViewAllProducts";
 import AdminDashboard from "./components/admin/AdminDashboard";
 
 
@@ -37,6 +38,7 @@ function App() {
           <Route path="/profile" element={<Profile />}/>
           <Route path="/edit-profile" element={<EditProfile />}/>
           <Route path="/viewSellers" element={<ViewSellers />}/>
+          <Route path="/viewAllProducts" element={<ViewAllProducts />}/>
           <Route path="/admin" element={<AdminDashboard />}/>
         </Routes>
       </BrowserRouter>
