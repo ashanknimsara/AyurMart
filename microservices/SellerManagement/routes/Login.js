@@ -55,6 +55,7 @@ router.get("/profile", async (req, res) => {
 
     // Return the user's profile information
     res.json({
+      id:sellerImp._id,
       username: sellerImp.username,
       email: sellerImp.email,
     });

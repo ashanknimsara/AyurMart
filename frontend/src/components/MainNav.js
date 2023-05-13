@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../assets/styles/mainnav.css";
 import { Link } from "react-router-dom";
-import { GrAddCircle } from "react-icons/gr";
 
 
 const Mainnav = () => {

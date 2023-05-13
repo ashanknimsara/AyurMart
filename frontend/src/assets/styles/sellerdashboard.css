@@ -1,0 +1,117 @@
+.addbutton{
+    margin-top:20px; 
+    margin-left:50px;
+}
+/* Style the table */
+.product-table table {
+    width: auto;
+    border-collapse: collapse;
+    margin-top:20px;
+    margin-bottom:20px;
+    margin-left:50px;
+    margin-right:50px;
+  }
+  
+  /* Style the table header */
+  .product-table th {
+    text-align: left;
+    background-color: #f2f2f2;
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  /* Style the table body */
+  .product-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    font-size: 14px;
+  }
+  
+  /* Style the table image */
+  .product-table img {
+    height: 100px;
+    width: 150px;
+    object-fit: cover;
+  }
+  
+  /* Truncate the content to 300 words */
+  .product-table .truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+  }
+  
+  /* Style the table buttons */
+  .product-table button {
+    background-color:  #19a41e;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+ .btn-success2{
+    background-color: #19a41e;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+ }
+  /* Style the table delete button */
+  .product-table button.delete {
+    background-color: #f44336;
+  }
+  
+  /* Style the table edit button */
+  .product-table button.edit {
+    background-color: #008CBA;
+  }
+  
+  /* Responsive table design */
+  @media only screen and (max-width: 768px) {
+    /* Hide the table header */
+    .product-table thead {
+      display: none;
+    }
+  
+    /* Display the table rows as blocks */
+    .product-table tr {
+      display: block;
+      margin-bottom: 16px;
+      border: none;
+    }
+  
+    /* Display the table data as inline-blocks */
+    .product-table td {
+      display: inline-block;
+      border: none;
+      font-size: 16px;
+      width: 100%;
+      text-align: center;
+    }
+  
+    /* Set the table image width */
+    .product-table img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 8px;
+    }
+  
+    /* Style the table buttons */
+    .product-table button {
+      display: block;
+      margin: 8px auto;
+      width: 100%;
+    }
+  }
+  
