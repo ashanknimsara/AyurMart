@@ -56,11 +56,8 @@ border-radius: 50%;
   border-radius: 5px;
   cursor: pointer;
 }
-.nav__btn:hover {
-  /* background-color: transparent; */
-  /* border: 1px solid #333; */
-  /* color: #444; */
-}
+
+
 .nav__ul__section {
   margin-left: 100px;
   display: flex;

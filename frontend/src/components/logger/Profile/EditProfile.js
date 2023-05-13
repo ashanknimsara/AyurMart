@@ -5,7 +5,6 @@ import MainNav from "../../MainNav";
 const EditProfile = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -30,7 +29,7 @@ const EditProfile = () => {
       method: "PUT",
       credentials: "include",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, email, password }),
+      body: JSON.stringify({ username, email}),
     });
     if (response.status === 200) {
       window.location.href = "/profile";
@@ -71,14 +70,7 @@ const EditProfile = () => {
             onChange={(event) => setEmail(event.target.value)}
             required
           />
-          <label htmlFor="password">New Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
+          
           <button type="submit">Update Profile</button>
         </form>
         <button className="delete-button" onClick={handleDelete}>

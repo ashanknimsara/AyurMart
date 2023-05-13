@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../../assets/styles/addproduct.css";
 import MainNav from "../MainNav.js";
@@ -7,12 +7,31 @@ import Footer from "../Footer.js"
 
 export default function SellerAddProduct() {
 
+
+    useEffect(() => {
+        const fetchProfile = async () => {
+          const response = await fetch("http://localhost:5000/auth/Profile", {
+            method: "GET",
+            credentials: "include",
+          });
+          if (response.status === 200) {
+            const data = await response.json();
+            setUserId(data.id);
+          } else {
+            // Redirect the user to the login page if they are not logged in
+            window.location.href = "/login";
+          }
+        };
+        fetchProfile();
+      }, []);
+    
+
     const [productId, setId] = useState("");
     const [productName, setName] = useState("");
     const [productPrice, setPrice] = useState("");
     const [productQuantity, setQuantity] = useState("");
     const [productDescrition, setDescrition] = useState("");
-    const [sellerId] = useState("644b8acb303285e572b3f045");
+    const [sellerId, setUserId] = useState("");
     const [productImage, setImage] = useState("");
 
 
@@ -39,6 +58,7 @@ export default function SellerAddProduct() {
         })
 
     }
+    
 
     return (
 

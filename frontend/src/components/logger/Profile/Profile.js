@@ -54,7 +54,11 @@ const Profile = () => {
             <div className="profile-info-right">
               <img src={logo} alt="logo" className="profile-info-logo" />
             </div>
+            
           </div>
+          <div className="addbutton">
+            <Link to={`/seller/dashboard`}><button type="button" className="btn-success2">Manage My Products</button></Link>
+        </div>
         </>
       )}
     </div>
